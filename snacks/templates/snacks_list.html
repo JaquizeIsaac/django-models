@@ -1,0 +1,20 @@
+{% extends 'snacks/base.html' %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 py-8">
+  <h2 class="text-2xl font-bold mb-4">List of snacks...</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    {% for snack in snacks %}
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="p-5">
+          <a href="{% url 'snacks_detail' snack.pk %}" class="text-lg font-semibold hover:text-blue-600 transition duration-300">
+            {{ snack.name }}
+          </a>
+          <p class="text-gray-700 mt-2">Rating: {{ snack.rating }}</p>
+          <p class="text-gray-500">Reviewer: {{ snack.reviewer }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock content %}
